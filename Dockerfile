@@ -3,7 +3,7 @@ WORKDIR /csi
 ADD go.mod go.sum /csi/
 RUN go mod download
 ADD . /csi/
-RUN CGO_ENABLED=0 go build -o driver.bin github.com/hetznercloud/csi-driver/cmd/driver
+RUN CGO_ENABLED=0 go build -v -o driver.bin ./cmd/driver
 
 FROM alpine:3.13
 RUN apk add --no-cache ca-certificates e2fsprogs xfsprogs blkid xfsprogs-extra e2fsprogs-extra btrfs-progs
